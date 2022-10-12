@@ -20,7 +20,7 @@ pipeline {
                     tool: 'MAVEN_TOOL', 
                     pom: 'pom.xml',
                     goals: 'clean install',
-                    deployerId: 'MAVEN_DEPOLYER'
+                    deployerId: 'MAVEN_DEPLOYER'
                    
                 )
             }
