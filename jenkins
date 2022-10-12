@@ -13,12 +13,23 @@ pipeline {
                     branch: 'master'
             }
         }
-        
-         stage('build'){
-
-            steps{
-                sh 'mvn package'
+    
+                stage ('Exec Maven') {
+            steps {
+                rtMavenRun (
+                    tool: 'MAVEN_TOOL', 
+                    pom: 'pom.xml',
+                    goals: 'package',
+                    deployerId: "MAVEN_DEPLOYER"
+                )
             }
-        }
     }
+                rtMavenDeployer (
+                    id: "MAVEN_DEPLOYER",
+                    serverId: "JFROG_new",
+                    releaseRepo: "praveen-libs-release-local",
+                    snapshotRepo: "praveen-libs-snapshot-local"
+                )
+
     }
+}
