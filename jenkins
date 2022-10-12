@@ -14,7 +14,7 @@ pipeline {
             }
         }
     
-                stage ('Exec Maven') {
+        stage ('Exec Maven') {
             steps {
                 rtMavenRun (
                     tool: 'MAVEN_TOOL', 
@@ -23,8 +23,9 @@ pipeline {
                     deployerId: "MAVEN_DEPLOYER"
                 )
             }
-    }         stage ('Artifactory config'){
-        steps{
+    } 
+      stage ('Artifactory config'){
+             steps{
 
                    rtMavenDeployer (
                     id: "MAVEN_DEPLOYER",
