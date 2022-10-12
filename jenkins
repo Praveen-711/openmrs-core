@@ -20,7 +20,7 @@ pipeline {
                     tool: 'MAVEN_TOOL', 
                     pom: 'pom.xml',
                     goals: 'package',
-                    deployerId: "MAVEN_DEPLOYER"
+                   
                 )
             }
     } 
