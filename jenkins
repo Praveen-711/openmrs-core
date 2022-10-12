@@ -13,6 +13,18 @@ pipeline {
                     branch: 'master'
             }
         }
+        stage ('Artifactory config'){
+             steps{
+
+                   rtMavenDeployer (
+                    id: "MAVEN_DEPLOYER",
+                    serverId: "JFROG_new",
+                    releaseRepo: "praveen-libs-release-local",
+                    snapshotRepo: "praveen-libs-snapshot-local"
+                )
+
+        }
+    }
     
         stage ('Exec Maven') {
             steps {
@@ -25,18 +37,6 @@ pipeline {
                 )
             }
     } 
-      stage ('Artifactory config'){
-             steps{
-
-                   rtMavenDeployer (
-                    id: "MAVEN_DEPLOYER",
-                    serverId: "JFROG_new",
-                    releaseRepo: "praveen-libs-release-local",
-                    snapshotRepo: "praveen-libs-snapshot-local"
-                )
-
-        }
-    }
-               
+      
     }
 }
